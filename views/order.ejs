@@ -1,0 +1,54 @@
+<!-- ****************************************setup**************************************** -->
+<%- include("parts/header") %>
+<%- include("parts/navbar") %>
+
+<!-- ****************************************container**************************************** -->
+<div class="container">
+
+<!-- ****************************************if no order**************************************** -->
+    <% if(orders.length == 0 ) { %>
+        <h2 class="cart-empty">no orders yet
+            <i class="fa fa-shopping-cart"></i>
+        </h2>
+        <% } else { %>
+    <!-- ****************************************table********************************************* -->
+    <div class="overflow-auto">
+    <table class="table text-center">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Total</th>
+            <th scope="col">State</th>
+            <th scope="col">Address</th>
+            <th scope="col">Time</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody class="table-active">
+            <% for( i=0 ; i < orders.length ; i++ ) { %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= orders[i].name %></td>
+            <td><%= orders[i].price %></td>
+            <td><%= orders[i].amount %></td>
+            <td><%= (orders[i].price) * (orders[i].amount) %> $</td>
+            <td><%= orders[i].state %></td>
+            <td><%= orders[i].address %></td>
+            <td><%= orders[i].timestamp %></td>
+            <td><%= orders[i].date %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+      </div>
+      <% } %>
+    </div>
+
+
+
+<%- include("parts/footer") %>
+
+

@@ -1,0 +1,62 @@
+<!-- ****************************************setup********************************************* -->
+<%- include("parts/header") %>
+<%- include("parts/navbar") %>
+
+<!-- ****************************************container**************************************** -->
+<div class="container">
+
+<!-- ****************************************if no cart**************************************** -->
+<% if(cart.length == 0 ) { %>
+    <h2 class="cart-empty">your cart is empty
+        <i class="fa fa-shopping-cart"></i>
+    </h2>
+    <% } else { %>
+<!-- ****************************************table********************************************* -->
+<div class="overflow-auto">
+<table class="table text-center ">
+    <thead class="table-primary">
+      <tr>
+        <th scope="col">No</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Total</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody class="table-active">
+        <% for( i=0 ; i < cart.length ; i++ ) { %>
+      <tr>
+        <th scope="row"><%= i+1 %></th>
+        <td><%= cart[i].name %></td>
+        <td><%= cart[i].price %></td>
+        <form method="post">
+        <td><input type="number" name="amount" value="<%= cart[i].amount %>" class="form-control"></td>
+        <td><%= (cart[i].price) * (cart[i].amount) %> $</td>
+        <td>
+                <input type="hidden" name="productId" value="<%= cart[i].productId %>">
+                <input type="hidden" name="name" value="<%= cart[i].name %>">
+                <input type="hidden" name="price" value="<%= cart[i].price %>">
+                <input type="hidden" name="amount" value="<%= cart[i].amount %>">
+                <input type="submit" value="Save" class="btn btn-success mb-2" formaction="/cart/save">
+                <input type="submit" value="Order" class="btn btn-primary mb-2" formaction="/order/verifyOrder">
+                <input type="submit" value="Delete" class="btn btn-danger mb-2" formaction="/cart/delete">
+                <div class="con-btn">
+                    <div class="container container-btn">
+                <input type="submit" value="Delete All" class="btn btn-danger deleteAll" formaction="/cart/deleteAll">
+            </div>    
+            </div>
+        </td>
+    </form>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+  </div>
+  <% } %>
+  <% if(error.length > 0) { %>
+  <div class="alert alert-danger text-center"><%= error %></div>
+  <% } %>
+</div>
+
+<%- include("parts/footer") %>

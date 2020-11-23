@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item <%= pageTitle == 'Home' ? 'active' : '' %>">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <% if(isUser) {%>
+                <li class="nav-item <%= pageTitle == 'Cart' ? 'active' : '' %>">
+                    <a class="nav-link" href="/cart">Cart <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item <%= pageTitle == 'Order' ? 'active' : '' %>">
+                    <a class="nav-link" href="/order">Orders <span class="sr-only">(current)</span></a>
+                </li>
+                <% } else { %>
+                <li class="nav-item <%= pageTitle == 'Signin' ? 'active' : '' %>">
+                    <a class="nav-link" href="/signin">Login <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item <%= pageTitle == 'Signup' ? 'active' : '' %>">
+                    <a class="nav-link" href="/signup">Signup <span class="sr-only">(current)</span></a>
+                </li>
+                <% } %>
+                <% if(isAdmin) { %>
+                <li class="nav-item <%= pageTitle == 'Add Product' ? 'active' : '' %>">
+                    <a class="nav-link" href="/admin/addProduct">Add <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item <%= pageTitle == 'Manage Order' ? 'active' : '' %>">
+                    <a class="nav-link" href="/admin/m-order">Manage Orders <span class="sr-only">(current)</span></a>
+                </li>
+                <% } %>
+            </ul>
+            <% if(isUser) { %>
+            <form action="/logout" method="post">
+            <input type="submit" value="Logout" class="btn btn-danger">
+            </form>
+            <% } %>
+        </div>
+    </div>
+</nav>

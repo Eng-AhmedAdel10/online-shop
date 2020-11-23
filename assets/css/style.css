@@ -1,0 +1,65 @@
+.card-img {
+  width: 100%;
+  height: 200px;
+}
+
+.col-mb:not(:last-of-type) {
+  margin-bottom: 20px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  margin-bottom: 20px;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+}
+
+.select-container {
+  display: flex;
+  margin: 20px 0;
+}
+.select-container .btn {
+  margin-left: 5px;
+}
+
+.description {
+  color: #f6f6f6;
+  background-color: #9891d0;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 10px 13px 20px 10px #eee;
+  text-transform: capitalize;
+}
+.description h2:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+
+.cart-empty {
+  color: #00f;
+  text-transform: capitalize;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translate(0, -50%);
+  text-shadow: 10px 10px 4px #eee;
+  text-align: center;
+}
+
+.con-btn {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  left: 0;
+}
+.con-btn .container-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/*# sourceMappingURL=style.css.map */

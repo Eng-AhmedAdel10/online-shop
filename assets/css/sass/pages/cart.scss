@@ -1,0 +1,24 @@
+.cart-empty
+{
+    color: #00f;
+    text-transform: capitalize;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translate(0,-50%);
+    text-shadow: 10px 10px 4px #eee ;
+    text-align: center;
+}
+.con-btn
+{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    left: 0;
+    .container-btn
+    {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

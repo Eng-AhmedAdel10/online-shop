@@ -1,0 +1,13 @@
+.description
+{
+    color: #f6f6f6;
+    background-color: #9891d0;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 10px 13px 20px 10px #eee;
+    text-transform: capitalize;
+    h2:not(:last-of-type)
+    {
+        margin-bottom: 40px;
+    }
+}

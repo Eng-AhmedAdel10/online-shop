@@ -1,0 +1,72 @@
+<!-- ****************************************setup**************************************** -->
+<%- include("parts/header") %>
+<%- include("parts/navbar") %>
+
+<!-- ****************************************container**************************************** -->
+<div class="container">
+
+<!-- ****************************************if no order**************************************** -->
+    <% if(orders.length == 0 ) { %>
+        <h2 class="cart-empty">no orders yet
+            <i class="fa fa-shopping-cart"></i>
+        </h2>
+        <% } else { %>
+    <!-- ****************************************btns********************************************* -->
+    <form action="/admin/m-order" method="GET">
+      <div class="select-container">
+        <select name="state" class="custom-select">
+          <option value="" hidden>Choose State</option>
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="sent">Sent</option>
+          <option value="completed">Completed</option>
+        </select>
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+    <!-- ****************************************table********************************************* -->
+    <div class="overflow-auto">
+    <table class="table text-center">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Total</th>
+            <th scope="col">State</th>
+            <th scope="col">Address</th>
+            <th scope="col">Time</th>
+            <th scope="col">Date</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody class="table-active">
+            <% for( i=0 ; i < orders.length ; i++ ) { %>
+          <tr>
+            <th scope="row"><%= i+1 %></th>
+            <td><%= orders[i].name %></td>
+            <td><%= orders[i].price %></td>
+            <td><%= orders[i].amount %></td>
+            <td><%= (orders[i].price) * (orders[i].amount) %> $</td>
+            <form action="/admin/m-order" method="POST">
+            <input type="hidden" name="productId" value="<%= orders[i]._id %>">
+            <td><input type="text" name="state" class="form-control" value="<%= orders[i].state %>"></td>
+            <td><%= orders[i].address %></td>
+            <td><%= orders[i].timestamp %></td>
+            <td><%= orders[i].date %></td>
+            <td><input type="submit" value="save" class="btn btn-success"></td>
+            </form>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+      <% } %>
+    </div>
+
+
+
+<%- include("parts/footer") %>
+
+
